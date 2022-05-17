@@ -1,0 +1,719 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using QLearningApp.Common;
+using QLearningApp.MachineLearning;
+
+namespace QLearningApp
+{
+    
+    public partial class Start : Form
+    {
+        int actionCounter = 0;
+        int i, j;
+        int counter = 0;
+        ArrayList buttonList = new ArrayList();
+        int[] blocks, actions;
+        int startPoint, targetPoint;
+        int[] block = EngelUret();
+        public static int[] EngelUret()
+        {
+            Random rastgele = new Random();
+            int k = 0;
+            int m;
+            int[] engel = new int[30];
+            for (int l = 0; l < 30; l++)
+            {
+                engel[l] = -99;
+            }
+            while (k < 30)
+            {
+                int sayi = rastgele.Next(0, 100);
+                for (m = 0; m < 30; m++)
+                {
+                    if (sayi == engel[m])
+                    {
+                        continue;
+                    }
+                }
+                engel[k] = sayi;
+                k++;
+            }
+            TextWriter dosya = new StreamWriter(@"D:\engeller.txt");
+            for(int i=0;i<30;i++)
+            {
+                dosya.WriteLine(i + 1 + ". engel " + engel[i]);
+            }
+            dosya.Flush();
+            dosya.Close();
+            return engel;
+        }
+
+        public Start()
+        {
+            InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int counter = 0;
+            for (j = 0; j < 10; j++)
+            {
+                for (i = 0; i < 10; i++)
+                {
+                    Button button = new Button();
+                    button.Text = counter.ToString();
+                    button.Name = counter.ToString();
+                    button.Size = new Size(50, 50);
+                    button.Location = new Point(200 + (45 * i), 100 + (45 * j));
+                    Controls.Add(button);
+                    if (block.Contains(counter))
+                    {
+                        button.BackColor = Color.Red;
+                    }
+                    counter++;
+
+                }
+            }
+        }
+    
+
+        private void v(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //ÖNEMLİ::Baslangıç,bitiş üzerinde engel koyuyor
+            
+            var qLearning = new QLearning(0.8, new RoomsProblem(block, Convert.ToInt32(endPointTB.Text.ToString())));
+            qLearning.TrainAgent(2000, Convert.ToInt32(endPointTB.Text.ToString()));
+            int initialState = 0;
+
+            QLearningStats qLearningStats = qLearning.Run(Convert.ToInt32(startPointTB.Text.ToString()),Convert.ToInt32(endPointTB.Text.ToString()));
+            var normalizedMatrix = qLearning.QTable.NormalizeMatrix();
+            int sayac = 0;
+            ArrayList dizi = new ArrayList();
+            for(int i=0;i<100;i++)
+            {
+                for(int j=0;j<100;j++)
+                {
+                    dizi.Add(normalizedMatrix[i][j]); 
+                }
+                Console.Write("\n");
+                sayac++;
+            }
+            
+
+
+            Start start = new Start();
+            Main main = new Main(qLearningStats.InitialState, qLearningStats.EndState, qLearningStats.Actions, block);
+
+            int count;
+            count = main.count;
+            grafik grafik = new grafik(dizi,count);
+            grafik.Visible = true; 
+            main.Visible = true;
+        }
+
+        private void Start_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+-----------------------------------------------------------------------------------
+using QLearningApp.MachineLearning;
+using System.Collections.Generic;
+using System;
+using System.Collections;
+
+namespace QLearningApp
+{
+    
+    class RoomsProblem : IQLearningProblem
+    {
+        int sayac = 0;
+        int[] engel;
+        int endState;
+        public RoomsProblem(int[] engel,int endState){
+            this.engel = engel;
+            this.endState = endState;
+        }
+        
+        public int[,] Rmatrisiuret(int[] engel)
+        {
+            int[,] matris = new int[10, 10];
+            int[,] matris2 = new int[100, 100];
+            int x = 0;
+            int kutunumara;
+            int kutunumara2;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    kutunumara = (i * 10) + j;
+                    kutunumara2 = (i * 10) + j;
+
+                    for (int y = 0; y < 100; y++)
+                    {
+                        matris2[x, y] = -1;
+                    }
+                    if (kutunumara + 1 < 100 && kutunumara%10!=9)
+                    {
+                        matris2[x, kutunumara + 1] = +3;
+                        if (kutunumara + 1 == this.endState)
+                        {
+                            matris2[x, kutunumara + 1] = 5;
+                        }
+                        for (int gama = 0; gama < 30; gama++)
+                        {
+                            if (kutunumara + 1 == engel[gama])
+                            {
+                                matris2[x, kutunumara + 1] = -5;
+                            }
+                        }
+
+                    }
+                    if (kutunumara - 1 >= 0 && kutunumara%10!=0)
+                    {
+                        matris2[x, kutunumara - 1] = 3;
+                        if (kutunumara - 1 == this.endState)
+                        {
+                            matris2[x, kutunumara - 1] = 5;
+                        }
+                        for (int gama = 0; gama < 30; gama++)
+                        {
+                            if (kutunumara - 1 == engel[gama])
+                            {
+                                matris2[x, kutunumara - 1] = -5;
+                            }
+                        }
+                    }
+                    if (kutunumara + 10 < 100 && kutunumara<90)
+                    {
+                        matris2[x, kutunumara + 10] = 3;
+                        if (kutunumara + 10 == this.endState)
+                        {
+                            matris2[x, kutunumara + 10] = 5;
+                        }
+                        for (int gama = 0; gama < 30; gama++)
+                        {
+                            if (kutunumara + 10 == engel[gama])
+                            {
+                                matris2[x, kutunumara + 10] = -5;
+                            }
+                        }
+                    }
+                    if (kutunumara - 10 >= 0 && kutunumara>9)
+                    {
+                        matris2[x, kutunumara - 10] = 3;
+                        if (kutunumara - 10 == this.endState)
+                        {
+                            matris2[x, kutunumara - 10] = 5;
+                        }
+                        for (int gama = 0; gama < 30; gama++)
+                        {
+                            if (kutunumara - 10 == engel[gama])
+                            {
+                                matris2[x, kutunumara - 10] = -5;
+                            }
+                        }
+                    }
+                    if (kutunumara2 - 9 >= 0 && kutunumara2 > 9 && kutunumara2 % 10 != 9) //sağ üst çapraz
+                    {
+                        matris2[x, kutunumara2 - 9] = 3;
+                        if (kutunumara2 - 9 == this.endState)
+                        {
+                            matris2[x, kutunumara2 - 9] = 5;
+                        }
+                        for (int gama = 0; gama < 30; gama++)
+                        {
+                            if (kutunumara2 - 9 == engel[gama])
+                            {
+                                matris2[x, kutunumara2 - 9] = -5;
+                            }
+                        }
+                    }
+                    if (kutunumara2 - 11 >= 0 && kutunumara2 != 0 && kutunumara2 > 9 && kutunumara2 % 10 != 0) //sol üst çapraz
+                    {
+                        matris2[x, kutunumara2 - 11] = 3;
+                        if (kutunumara2 - 11 == this.endState)
+                        {
+                            matris2[x, kutunumara2 - 11] = 5;
+                        }
+                        for (int gama = 0; gama < 30; gama++)
+                        {
+                            if (kutunumara2 - 11 == engel[gama])
+                            {
+                                matris2[x, kutunumara2 - 11] = -5;
+                            }
+                        }
+                    }
+                    if (kutunumara2 + 11 < 100 && kutunumara2 % 10 != 9 && kutunumara2 < 90)//sağ alt çapraz
+                    {
+                        matris2[x, kutunumara2 + 11] = 3;//sol alt çapraz
+                        if (kutunumara2 + 11 == this.endState)
+                        {
+                            matris2[x, kutunumara2 + 11] = 5;
+                        }
+                        for (int gama = 0; gama < 30; gama++)
+                        {
+                            if (kutunumara2 + 11 == engel[gama])
+                            {
+                                matris2[x, kutunumara2 + 11] = -5;
+                            }
+                        }
+                    }
+                    if (kutunumara2 + 9 < 100 && kutunumara2 % 10 != 0 && kutunumara2 < 90)
+                    {
+                        matris2[x, kutunumara2 + 9] = 3;
+                        if (kutunumara2 + 9 == this.endState)
+                        {
+                            matris2[x, kutunumara2 + 9] = 5;
+                        }
+                        for (int gama = 0; gama < 30; gama++)
+                        {
+                            if (kutunumara2 + 9 == engel[gama])
+                            {
+                                matris2[x, kutunumara2 + 9] = -5;
+                            }
+                        }
+                    }
+                    x++;
+
+
+                }
+                /* Console.WriteLine(deneme);
+                 deneme++;*/
+            }
+
+
+            return matris2;
+        }
+
+        public int NumberOfStates => 100;
+
+        public int NumberOfActions => 100;
+
+        public double GetReward(int currentState, int action)
+        {
+
+            int[,] matris2 =Rmatrisiuret(this.engel);
+            return matris2[currentState,action];
+        } 
+
+        public int[] GetValidActions(int currentState,grafik2 g2)
+        {
+            sayac = 0;
+            
+            int[,] matris2 = Rmatrisiuret(this.engel);
+            List<int> validActions = new List<int>();
+            for (int i = 0; i < matris2.GetLength(1); i++)
+            {
+                if (matris2[currentState,i] != -1)
+                {
+                    validActions.Add(i);
+                    g2.chart(sayac,i);
+                    sayac++;
+                }
+                    
+            }
+            
+            
+            return validActions.ToArray();
+        }
+
+        public bool GoalStateIsReached(int currentState,int endState)
+        {
+            return currentState == endState;
+        }
+    }
+}
+-----------------------------------------------------------------------------------
+
+using System.Windows.Forms;
+
+namespace QLearningApp
+{
+    public class Program
+    {
+        static void Main()
+        {
+            Application.Run(new Start());
+        }
+    }
+}
+-----------------------------------------------------------------------------------using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace QLearningApp
+{
+    public partial class Main : Form
+    {
+        int i, j;
+        int counter = 0;
+        public int count = 0;
+        ArrayList buttonList = new ArrayList();
+        int[] blocks, actions;
+        int startPoint,targetPoint;
+
+        public Main(int startPoint, int targetPoint,int[] actions,int[] blocks)
+        {
+            InitializeComponent();
+            this.startPoint = startPoint;
+            this.targetPoint = targetPoint;
+            this.actions = actions;
+            this.blocks = blocks;
+            Generate();
+        }
+
+        private void Generate()
+        {
+            int actionCounter = 0;
+            for (j = 0; j < 10; j++)
+            {
+                for (i = 0; i < 10; i++)
+                {
+                    Button button = new Button();
+                    button.Text = counter.ToString();
+                    button.Name = counter.ToString();
+                    button.Size = new Size(50, 50);
+                    button.Location = new Point(45 * i, 45 * j);
+                    Controls.Add(button);
+                    buttonList.Add(button);
+
+                    if (blocks.Contains(counter))
+                    {
+                        button.BackColor = (Color.Red);
+                    }
+                    if (counter == targetPoint)
+                    {
+                        actionCounter++;
+                        button.BackColor = (Color.Green);
+                        button.Text += "(" + actionCounter.ToString()+")";
+                    }
+                    if (counter == startPoint)
+                    {
+                        actionCounter++;
+                        button.BackColor = (Color.Gold);
+                        button.Text += "("+actionCounter.ToString()+")";
+                    }
+                    if (actions.Contains(counter) && counter != targetPoint)
+                    {
+                        actionCounter++;
+                        count++;
+                        button.BackColor = Color.Purple;
+                        button.Text += "(" + actionCounter.ToString()+")";
+                    }
+                    counter++;
+                }
+            }
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+-----------------------------------------------------------------------------------using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace QLearningApp
+{
+    public partial class grafik2 : Form
+    {
+        
+        public grafik2()
+        {
+            InitializeComponent();
+            
+            
+        }
+
+        private void grafik2_Load(object sender, EventArgs e)
+        {
+            
+        }
+        public void chart(int adımSayısı,int sayac)
+        {
+            chart1.Series["Bölüm Adım Sayısı"].Points.AddXY(sayac,adımSayısı);
+        }
+    }
+}
+-----------------------------------------------------------------------------------using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace QLearningApp
+{
+    public partial class grafik : Form
+    {
+        public ArrayList dizi;
+        public int count;
+        public grafik(ArrayList dizi,int count)
+        {
+            InitializeComponent();
+            this.dizi = dizi;
+            this.count = count;
+        }
+
+        private void grafik_Load(object sender, EventArgs e)
+        {
+            int sayac = 0;
+            foreach (double j in dizi)
+            {     
+                    chart1.Series["Q maaliyetleri"].Points.AddXY(sayac, j);
+                sayac++;
+            }
+        }
+    }
+}
+-----------------------------------------------------------------------------------using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace QLearningApp.MachineLearning
+{
+    public class QLearning
+    { public grafik2 g2;
+        private Random _random = new Random();
+        private double _gamma;
+        public double Gamma { get => _gamma; }
+
+        private double[][] _qTable;
+        public double[][] QTable { get => _qTable; }
+
+        private IQLearningProblem _qLearningProblem;
+        
+        public QLearning(double gamma, IQLearningProblem qLearningProblem)
+        {
+            this.g2 = new grafik2();
+            this.g2.Visible = true;
+            _qLearningProblem = qLearningProblem;
+            _gamma = gamma;
+            _qTable = new double[qLearningProblem.NumberOfStates][];
+            for(int i = 0; i < qLearningProblem.NumberOfStates; i++)
+                _qTable[i] = new double[qLearningProblem.NumberOfActions];
+        }
+
+        public void TrainAgent(int numberOfIterations,int endState)
+        {
+            for(int i = 0; i < numberOfIterations; i++)
+            {
+                int initialState = SetInitialState(_qLearningProblem.NumberOfStates);
+                InitializeEpisode(initialState, endState);
+            }
+        }
+
+        public QLearningStats Run(int initialState,int endState)
+        {
+            
+            if (initialState < 0 || initialState > _qLearningProblem.NumberOfStates) throw new ArgumentException($"The initial state can be between [0-{_qLearningProblem.NumberOfStates}", nameof(initialState));
+            
+            var result = new QLearningStats();
+            result.InitialState = initialState;
+            result.EndState = endState;
+            int state = initialState;
+
+            List<int> actions = new List<int>();
+            while (true)
+            {
+                result.Steps += 1;
+                int action = _qTable[state].ToList().IndexOf(_qTable[state].Max());
+                state = action;
+                actions.Add(action);
+
+                if (_qLearningProblem.GoalStateIsReached(action,endState))
+                {
+                    result.EndState = action;
+                    break;
+                }
+            }
+            result.Actions = actions.ToArray();
+            return result;
+        }
+
+        private void InitializeEpisode(int initialState,int endState)
+        {
+            int currentState = initialState;
+            while (true)
+            {
+                currentState = TakeAction(currentState);
+                if (_qLearningProblem.GoalStateIsReached(currentState, endState))
+                    break;
+            }
+        }
+
+        private int TakeAction(int currentState)
+        {
+            var validActions = _qLearningProblem.GetValidActions(currentState,this.g2);
+            
+            int randomIndexAction = _random.Next(0, validActions.Length);
+            int action = validActions[randomIndexAction];
+
+            double saReward = _qLearningProblem.GetReward(currentState, action);
+            double nsReward = _qTable[action].Max();          
+            double qCurrentState = saReward + (_gamma * nsReward);
+            _qTable[currentState][action] = qCurrentState;
+            int newState = action;
+            return newState;
+        }
+
+        private int SetInitialState(int numberOfStates)
+        {
+            return _random.Next(0, numberOfStates);
+        }
+    }
+}
+-----------------------------------------------------------------------------------namespace QLearningApp.MachineLearning
+{
+    public interface IQLearningProblem
+    {
+        //void Rmatrisiuret();
+        int NumberOfStates { get; }
+        int NumberOfActions { get; }
+        int[] GetValidActions(int currentState, grafik2 g2);
+        double GetReward(int currentState, int action);
+        bool GoalStateIsReached(int currentState,int endState);
+    }
+}
+-----------------------------------------------------------------------------------using System.Text;
+
+namespace QLearningApp.MachineLearning
+{
+    public class QLearningStats
+    {
+        public int InitialState { get; set; }
+        public int EndState { get; set; }
+        public int Steps { get; set; }
+        public int[] Actions { get; set; }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Agent needed {Steps} steps to fnd the solution");
+            sb.AppendLine($"Agent Initial State: {InitialState}");
+            foreach (var action in Actions)
+                sb.AppendLine($"Action: {action}");
+            sb.AppendLine($"Agent arrived at the goal state: {EndState}");
+            return sb.ToString();
+        }
+    }
+}
+-----------------------------------------------------------------------------------
+using System;
+using System.Text;
+
+namespace QLearningApp.Common
+{
+    public static class QTableExtensions
+    {
+        public static double[][] NormalizeMatrix(this double[][] matrix)
+        {
+            var maxElement = matrix.GetMaxElement();
+
+            var normalizedMatrix = new double[matrix.Length][];
+            for (int i = 0; i < matrix.Length; i++)
+            {
+                normalizedMatrix[i] = new double[matrix[i].Length];
+                for (int j = 0; j < matrix[i].Length; j++)
+                {
+                    if (matrix[i][j] != 0)
+                        normalizedMatrix[i][j] = Math.Round((matrix[i][j] * 100) / maxElement, 0);
+                }
+            }
+            return normalizedMatrix;
+        }
+
+        public static double GetMaxElement(this double[][] matrix)
+        {
+            double maxElement = 0;
+            for (int i = 0; i < matrix.Length; i++)
+            {
+                for (int j = 0; j < matrix[i].Length; j++)
+                {
+                    if (matrix[i][j] > maxElement)
+                        maxElement = matrix[i][j];
+                }
+            }
+            return maxElement;
+        }
+
+        public static string Print(this double[][] matrix)
+        {
+            var sb = new StringBuilder();
+            for (int i = 0; i < matrix.Length; i++)
+            {
+                for (int j = 0; j < matrix[i].Length; j++)
+                {
+                    sb.Append(string.Format("{0}   ", matrix[i][j]));
+                }
+                sb.AppendLine(Environment.NewLine);
+            }
+
+            return sb.ToString();
+        }
+    }
+}
+-----------------------------------------------------------------------------------
+
+

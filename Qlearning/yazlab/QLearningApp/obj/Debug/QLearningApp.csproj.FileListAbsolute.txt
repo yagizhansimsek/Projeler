@@ -1,0 +1,65 @@
+C:\Users\YağızhanŞimşek\Desktop\PROJE\QLearningApp\bin\Debug\QLearningApp.exe.config
+C:\Users\YağızhanŞimşek\Desktop\PROJE\QLearningApp\bin\Debug\QLearningApp.exe
+C:\Users\YağızhanŞimşek\Desktop\PROJE\QLearningApp\bin\Debug\QLearningApp.pdb
+C:\Users\YağızhanŞimşek\Desktop\PROJE\QLearningApp\obj\Debug\QLearningApp.csprojAssemblyReference.cache
+C:\Users\YağızhanŞimşek\Desktop\PROJE\QLearningApp\obj\Debug\QLearningApp.csproj.CoreCompileInputs.cache
+C:\Users\YağızhanŞimşek\Desktop\PROJE\QLearningApp\obj\Debug\QLearningApp.exe
+C:\Users\YağızhanŞimşek\Desktop\PROJE\QLearningApp\obj\Debug\QLearningApp.pdb
+C:\Users\emren\source\repos\QLearningApp\QLearningApp\bin\Debug\QLearningApp.exe.config
+C:\Users\emren\source\repos\QLearningApp\QLearningApp\bin\Debug\QLearningApp.exe
+C:\Users\emren\source\repos\QLearningApp\QLearningApp\bin\Debug\QLearningApp.pdb
+C:\Users\emren\source\repos\QLearningApp\QLearningApp\obj\Debug\QLearningApp.csprojAssemblyReference.cache
+C:\Users\emren\source\repos\QLearningApp\QLearningApp\obj\Debug\QLearningApp.csproj.CoreCompileInputs.cache
+C:\Users\emren\source\repos\QLearningApp\QLearningApp\obj\Debug\QLearningApp.exe
+C:\Users\emren\source\repos\QLearningApp\QLearningApp\obj\Debug\QLearningApp.pdb
+C:\Users\emren\source\repos\QLearningApp\QLearningApp\obj\Debug\QLearningApp.Main.resources
+C:\Users\emren\source\repos\QLearningApp\QLearningApp\obj\Debug\QLearningApp.csproj.GenerateResource.cache
+C:\Users\emren\source\repos\QLearningApp\QLearningApp\obj\Debug\QLearningApp.Start.resources
+C:\Users\YağızhanŞimşek\Desktop\QLearningApp\QLearningApp\bin\Debug\QLearningApp.exe.config
+C:\Users\YağızhanŞimşek\Desktop\QLearningApp\QLearningApp\bin\Debug\QLearningApp.exe
+C:\Users\YağızhanŞimşek\Desktop\QLearningApp\QLearningApp\bin\Debug\QLearningApp.pdb
+C:\Users\YağızhanŞimşek\Desktop\QLearningApp\QLearningApp\obj\Debug\QLearningApp.csprojAssemblyReference.cache
+C:\Users\YağızhanŞimşek\Desktop\QLearningApp\QLearningApp\obj\Debug\QLearningApp.Main.resources
+C:\Users\YağızhanŞimşek\Desktop\QLearningApp\QLearningApp\obj\Debug\QLearningApp.Start.resources
+C:\Users\YağızhanŞimşek\Desktop\QLearningApp\QLearningApp\obj\Debug\QLearningApp.csproj.GenerateResource.cache
+C:\Users\YağızhanŞimşek\Desktop\QLearningApp\QLearningApp\obj\Debug\QLearningApp.csproj.CoreCompileInputs.cache
+C:\Users\YağızhanŞimşek\Desktop\QLearningApp\QLearningApp\obj\Debug\QLearningApp.exe
+C:\Users\YağızhanŞimşek\Desktop\QLearningApp\QLearningApp\obj\Debug\QLearningApp.pdb
+C:\Users\suayb\OneDrive\Masaüstü\projeeee\QLearningApp\QLearningApp\bin\Debug\QLearningApp.exe.config
+C:\Users\suayb\OneDrive\Masaüstü\projeeee\QLearningApp\QLearningApp\bin\Debug\QLearningApp.exe
+C:\Users\suayb\OneDrive\Masaüstü\projeeee\QLearningApp\QLearningApp\bin\Debug\QLearningApp.pdb
+C:\Users\suayb\OneDrive\Masaüstü\projeeee\QLearningApp\QLearningApp\obj\Debug\QLearningApp.csprojAssemblyReference.cache
+C:\Users\suayb\OneDrive\Masaüstü\projeeee\QLearningApp\QLearningApp\obj\Debug\QLearningApp.Main.resources
+C:\Users\suayb\OneDrive\Masaüstü\projeeee\QLearningApp\QLearningApp\obj\Debug\QLearningApp.Start.resources
+C:\Users\suayb\OneDrive\Masaüstü\projeeee\QLearningApp\QLearningApp\obj\Debug\QLearningApp.csproj.GenerateResource.cache
+C:\Users\suayb\OneDrive\Masaüstü\projeeee\QLearningApp\QLearningApp\obj\Debug\QLearningApp.csproj.CoreCompileInputs.cache
+C:\Users\suayb\OneDrive\Masaüstü\projeeee\QLearningApp\QLearningApp\obj\Debug\QLearningApp.exe
+C:\Users\suayb\OneDrive\Masaüstü\projeeee\QLearningApp\QLearningApp\obj\Debug\QLearningApp.pdb
+C:\Users\suayb\OneDrive\Masaüstü\projeeee\QLearningApp\QLearningApp\obj\Debug\QLearningApp.grafik.resources
+C:\Users\suayb\OneDrive\Masaüstü\projeeee\QLearningApp\QLearningApp\obj\Debug\QLearningApp.grafik2.resources
+C:\Users\YağızhanŞimşek\Desktop\QLearningApp\QLearningApp\obj\Debug\QLearningApp.grafik.resources
+C:\Users\YağızhanŞimşek\Desktop\QLearningApp\QLearningApp\obj\Debug\QLearningApp.grafik2.resources
+C:\Users\YağızhanŞimşek\Desktop\yazlab\yağız\QLearningApp\bin\Debug\QLearningApp.exe.config
+C:\Users\YağızhanŞimşek\Desktop\yazlab\yağız\QLearningApp\bin\Debug\QLearningApp.exe
+C:\Users\YağızhanŞimşek\Desktop\yazlab\yağız\QLearningApp\bin\Debug\QLearningApp.pdb
+C:\Users\YağızhanŞimşek\Desktop\yazlab\yağız\QLearningApp\obj\Debug\QLearningApp.csprojAssemblyReference.cache
+C:\Users\YağızhanŞimşek\Desktop\yazlab\yağız\QLearningApp\obj\Debug\QLearningApp.grafik.resources
+C:\Users\YağızhanŞimşek\Desktop\yazlab\yağız\QLearningApp\obj\Debug\QLearningApp.grafik2.resources
+C:\Users\YağızhanŞimşek\Desktop\yazlab\yağız\QLearningApp\obj\Debug\QLearningApp.Main.resources
+C:\Users\YağızhanŞimşek\Desktop\yazlab\yağız\QLearningApp\obj\Debug\QLearningApp.Start.resources
+C:\Users\YağızhanŞimşek\Desktop\yazlab\yağız\QLearningApp\obj\Debug\QLearningApp.csproj.GenerateResource.cache
+C:\Users\YağızhanŞimşek\Desktop\yazlab\yağız\QLearningApp\obj\Debug\QLearningApp.csproj.CoreCompileInputs.cache
+C:\Users\YağızhanŞimşek\Desktop\yazlab\yağız\QLearningApp\obj\Debug\QLearningApp.exe
+C:\Users\YağızhanŞimşek\Desktop\yazlab\yağız\QLearningApp\obj\Debug\QLearningApp.pdb
+C:\Users\yagiz\OneDrive\Masaüstü\Projelerim\Okul Projeleri\yazlab2-3\yazlab\QLearningApp\bin\Debug\QLearningApp.exe.config
+C:\Users\yagiz\OneDrive\Masaüstü\Projelerim\Okul Projeleri\yazlab2-3\yazlab\QLearningApp\bin\Debug\QLearningApp.exe
+C:\Users\yagiz\OneDrive\Masaüstü\Projelerim\Okul Projeleri\yazlab2-3\yazlab\QLearningApp\bin\Debug\QLearningApp.pdb
+C:\Users\yagiz\OneDrive\Masaüstü\Projelerim\Okul Projeleri\yazlab2-3\yazlab\QLearningApp\obj\Debug\QLearningApp.csproj.AssemblyReference.cache
+C:\Users\yagiz\OneDrive\Masaüstü\Projelerim\Okul Projeleri\yazlab2-3\yazlab\QLearningApp\obj\Debug\QLearningApp.grafik.resources
+C:\Users\yagiz\OneDrive\Masaüstü\Projelerim\Okul Projeleri\yazlab2-3\yazlab\QLearningApp\obj\Debug\QLearningApp.grafik2.resources
+C:\Users\yagiz\OneDrive\Masaüstü\Projelerim\Okul Projeleri\yazlab2-3\yazlab\QLearningApp\obj\Debug\QLearningApp.Main.resources
+C:\Users\yagiz\OneDrive\Masaüstü\Projelerim\Okul Projeleri\yazlab2-3\yazlab\QLearningApp\obj\Debug\QLearningApp.Start.resources
+C:\Users\yagiz\OneDrive\Masaüstü\Projelerim\Okul Projeleri\yazlab2-3\yazlab\QLearningApp\obj\Debug\QLearningApp.csproj.GenerateResource.cache
+C:\Users\yagiz\OneDrive\Masaüstü\Projelerim\Okul Projeleri\yazlab2-3\yazlab\QLearningApp\obj\Debug\QLearningApp.csproj.CoreCompileInputs.cache
+C:\Users\yagiz\OneDrive\Masaüstü\Projelerim\Okul Projeleri\yazlab2-3\yazlab\QLearningApp\obj\Debug\QLearningApp.exe
+C:\Users\yagiz\OneDrive\Masaüstü\Projelerim\Okul Projeleri\yazlab2-3\yazlab\QLearningApp\obj\Debug\QLearningApp.pdb

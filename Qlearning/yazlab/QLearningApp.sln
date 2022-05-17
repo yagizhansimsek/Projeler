@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLearningApp", "QLearningApp\QLearningApp.csproj", "{0C4F6721-C039-4F1E-B61E-35F9A7BA8984}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C4F6721-C039-4F1E-B61E-35F9A7BA8984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C4F6721-C039-4F1E-B61E-35F9A7BA8984}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C4F6721-C039-4F1E-B61E-35F9A7BA8984}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C4F6721-C039-4F1E-B61E-35F9A7BA8984}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2EB03C56-8F28-48DC-BAEA-D3AE33BAFDC5}
+	EndGlobalSection
+EndGlobal
