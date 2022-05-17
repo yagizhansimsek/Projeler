@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Sorgu3">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="83dp"
+        android:onClick="BackButton"
+        android:text="Back"
+        app:layout_constraintBottom_toTopOf="@+id/date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/date"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginBottom="61dp"
+        android:ems="10"
+        android:hint="Başlangıç Tarihi"
+        android:inputType="date"
+        app:layout_constraintBottom_toTopOf="@+id/calculate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <Button
+        android:id="@+id/calculate"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginEnd="171dp"
+        android:layout_marginRight="171dp"
+        android:layout_marginBottom="134dp"
+        android:onClick="queryCalc"
+        android:text="Hesapla"
+        app:layout_constraintBottom_toTopOf="@+id/deneme"
+        app:layout_constraintEnd_toStartOf="@+id/cizbuton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date" />
+
+    <TextView
+        android:id="@+id/deneme"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="299dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cizbuton" />
+
+    <Button
+        android:id="@+id/cizbuton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="333dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginRight="42dp"
+        android:layout_marginBottom="134dp"
+        android:onClick="draw"
+        android:text="ÇİZ"
+        app:layout_constraintBottom_toTopOf="@+id/deneme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/calculate"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
